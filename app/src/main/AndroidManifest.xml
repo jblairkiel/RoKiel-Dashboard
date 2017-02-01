@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.RestaurantListItemActivity"></activity>
+        <activity android:name=".activity.RestaurantSubmissionListItemActivity"></activity>
     </application>
 
 </manifest>

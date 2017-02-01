@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import com.rokiel.james.rokieldashboard.R;
 import com.rokiel.james.rokieldashboard.activity.RestaurantListItemActivity;
+import com.rokiel.james.rokieldashboard.activity.RestaurantSubmissionListItemActivity;
 
 import custom_classes.RestaurantSubmissionListItem;
 import adapter.RestaurantSubmissionsListAdapter;
@@ -139,7 +141,7 @@ public class Restaurant_Submissions_Fragment extends Fragment{
                     resList.setItemChecked(position, true);
                     RestaurantSubmissionListItem rLI = restaurantSubmissionsListListItem.get(position);
 
-                    Intent intent = new Intent(getActivity(), RestaurantListItemActivity.class);
+                    Intent intent = new Intent(getActivity(), RestaurantSubmissionListItemActivity.class);
                     Bundle b = new Bundle();
 
                     String lID = Integer.toString(rLI.getID());

@@ -1,10 +1,12 @@
 package com.rokiel.james.rokieldashboard.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -12,7 +14,9 @@ import com.rokiel.james.rokieldashboard.R;
 
 public class RestaurantListItemActivity extends AppCompatActivity {
 
-    View lview;
+    Button editButton;
+    Button deleteButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,16 @@ public class RestaurantListItemActivity extends AppCompatActivity {
         String rPrice = b.getString("price");
         String rGroup = b.getString("group");
 
+        editButton = (Button) this.findViewById(R.id.edit_restaurant_list_item_button);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        deleteButton = (Button) this.findViewById(R.id.delete_restaurant_list_item_button);
+
+
         setContentView(R.layout.activity_restaurant__list__item);
         loadRestaurantListItem(rID, rName, rAddress, rType, rPrice, rGroup);
     }
@@ -35,9 +49,7 @@ public class RestaurantListItemActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                Intent intent = new Intent(this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                super.onBackPressed();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

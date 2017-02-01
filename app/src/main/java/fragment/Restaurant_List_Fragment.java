@@ -9,6 +9,9 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -41,6 +44,7 @@ import org.json.JSONException;
 public class Restaurant_List_Fragment extends ListFragment{
 
     ArrayList<RestaurantListItem> restaurantListItemList = new ArrayList<>();
+    ArrayList<RestaurantListItem> selectedRestaurantListItems = new ArrayList<>();
     private ListView resList;
     private RestaurantListAdapter lAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -50,6 +54,7 @@ public class Restaurant_List_Fragment extends ListFragment{
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        setHasOptionsMenu(true);
         View view  = inflater.inflate(R.layout.fragment_restaurant__list, container, false);
         //swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         //swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -60,6 +65,24 @@ public class Restaurant_List_Fragment extends ListFragment{
         //});
         new DownloadJSON(view).execute();
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater){
+        super.onCreateOptionsMenu(menu, menuInflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            //do something
+            return true;
+        }
+        if(id == R.id.trashCanRestaurantListActionBar)
+        return super.onOptionsItemSelected(item);
     }
 
     private class DownloadJSON extends AsyncTask<Void, Void, Void> {
@@ -135,6 +158,25 @@ public class Restaurant_List_Fragment extends ListFragment{
             lAdapter = new RestaurantListAdapter(lView.getContext(), R.layout.fragment_restaurant__list, restaurantListItemList);
             resList.setAdapter(lAdapter);
 
+            resList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    RestaurantListItem selectedItem = restaurantListItemList.get(position);
+                    if(selectedRestaurantListItems.contains(selectedItem)) {
+                        resList.setItemChecked(position, false);
+                        selectedRestaurantListItems.remove(selectedItem);
+                    }
+                    else {
+                        resList.setItemChecked(position, true);
+                        selectedRestaurantListItems.add(selectedItem);
+                    }
+
+                    if(selectedRestaurantListItems.isEmpty()){
+                        getActivity().getActionBar().
+                    }
+                    return false;
+                }
+            });
             resList.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener(){
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long id){
