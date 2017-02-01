@@ -19,6 +19,9 @@ import android.view.WindowManager;
 
 import com.rokiel.james.rokieldashboard.R;
 
+import fragment.Restaurant_List_Fragment;
+import fragment.Restaurant_Submissions_Fragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         //Set the fragment initially
-        fragment.Restaurant_List fragment = new fragment.Restaurant_List();
+        Restaurant_List_Fragment fragment = new Restaurant_List_Fragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container,fragment);
         fragmentTransaction.commit();
@@ -127,15 +130,15 @@ public class MainActivity extends AppCompatActivity
 
     private Fragment getHomeFragment(){
         if(CURRENT_TAG == RESTAURANT_LIST_TAG){
-            fragment.Restaurant_List restaurantListFragment = new fragment.Restaurant_List();
+            Restaurant_List_Fragment restaurantListFragment = new Restaurant_List_Fragment();
             return restaurantListFragment;
         }
         else if(CURRENT_TAG == RESTAURANT_SUBMISSIONS_TAG){
-            fragment.Restaurant_Submissions restaurantSubmissionsFragment= new fragment.Restaurant_Submissions();
+            Restaurant_Submissions_Fragment restaurantSubmissionsFragment= new Restaurant_Submissions_Fragment();
             return restaurantSubmissionsFragment;
         }
         else{
-            fragment.Restaurant_List restaurantListFragment = new fragment.Restaurant_List();
+            Restaurant_List_Fragment restaurantListFragment = new Restaurant_List_Fragment();
             return restaurantListFragment;
         }
     }

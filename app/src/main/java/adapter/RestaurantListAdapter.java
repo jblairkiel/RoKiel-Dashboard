@@ -1,4 +1,4 @@
-package com.rokiel.james.rokieldashboard.activity;
+package adapter;
 
 import java.util.ArrayList;
 
@@ -9,26 +9,27 @@ import android.widget.ArrayAdapter;
 import android.content.Context;
 import android.widget.TextView;
 import com.rokiel.james.rokieldashboard.R;
+import custom_classes.RestaurantListItem;
 
-public class RestaurantAdapter extends ArrayAdapter<Restaurant> {
+public class RestaurantListAdapter extends ArrayAdapter<RestaurantListItem>{
     View customView;
     private Context lContext;
-    private ArrayList<Restaurant> lRestaurant;
+    private ArrayList<RestaurantListItem> lRestaurantListItem;
     private int lTextViewResourceId;
     private static LayoutInflater inflater = null;
 
-    public RestaurantAdapter(Context context, int textViewResourceId, ArrayList<Restaurant> _lRestaurant) {
-        super(context, R.layout.custom_restaurant_list_row, _lRestaurant);
-        lRestaurant = _lRestaurant;
+    public RestaurantListAdapter(Context context, int textViewResourceId, ArrayList<RestaurantListItem> _lRestaurantListItem) {
+        super(context, R.layout.custom_restaurant_list_row, _lRestaurantListItem);
+        lRestaurantListItem = _lRestaurantListItem;
         lContext = context;
         lTextViewResourceId = textViewResourceId;
     }
 
     public int getCount() {
-        return lRestaurant.size();
+        return lRestaurantListItem.size();
     }
 
-    public Restaurant getItem(Restaurant position) {
+    public RestaurantListItem getItem(RestaurantListItem position) {
         return position;
     }
 
@@ -42,20 +43,34 @@ public class RestaurantAdapter extends ArrayAdapter<Restaurant> {
 
     }
 
+    public void udpateAdapter(ArrayList<RestaurantListItem> _lRestaurantListItem){
+        lRestaurantListItem = _lRestaurantListItem;
+        notifyDataSetChanged();
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater lInflater = LayoutInflater.from(getContext());
         customView = lInflater.inflate(R.layout.custom_restaurant_list_row,parent,false);
 
-        Restaurant lRestaurant = getItem(position);
+        RestaurantListItem lRestaurantListItem = getItem(position);
         TextView restaurantText = (TextView) customView.findViewById(R.id.restaurantNameText);
         TextView restaurantAddressText = (TextView) customView.findViewById(R.id.restaurantAddressText);
 
-        restaurantText.setText(lRestaurant.RestaurantName);
-        restaurantAddressText.setText(lRestaurant.Address);
-        customView.setTag(lRestaurant.ID);
+        restaurantText.setText(lRestaurantListItem.getRestaurantName());
+        restaurantAddressText.setText(lRestaurantListItem.getAddress());
+        customView.setTag(lRestaurantListItem.getID());
 
         return customView;
 
+    }
+
+    @Override
+    public boolean areAllItemsEnabled(){
+        return true;
+    }
+
+    public boolean isEnabled(int arg0){
+        return true;
     }
 }

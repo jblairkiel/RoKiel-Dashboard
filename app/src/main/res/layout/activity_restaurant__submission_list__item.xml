@@ -1,0 +1,127 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingTop="?attr/actionBarSize"
+    tools:context=".activity.RestaurantSubmissionListItemActivity">
+
+    <TableLayout
+        android:layout_height="wrap_content"
+        android:paddingTop="?attr/actionBarSize"
+        android:layout_width="wrap_content">
+        <!-- TODO: Update blank fragment layout -->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip">
+
+            <TextView
+                android:id="@+id/restaurant_submission_id_textView_list_item"
+                android:text="ID"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/restaurant_submission_id_textView_list_item_result"
+                android:text="ID"
+                android:gravity="end"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                tools:ignore="HardcodedText" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip">
+
+            <TextView
+                android:id="@+id/restaurant_submission_name_textView_list_item"
+                android:text="Restaurant Name"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Name"
+                android:ems="10"
+                android:id="@+id/restaurant_submission_name_textView_list_item_result"
+                tools:ignore="HardcodedText" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip">
+
+            <TextView
+                android:id="@+id/restaurant_submission_location_textView_list_item"
+                android:text="Location"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Location"
+                android:ems="10"
+                android:id="@+id/restaurant_submission_location_textView_list_item_result"
+                tools:ignore="HardcodedText" />
+
+        </TableRow>
+         <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip">
+
+            <TextView
+                android:id="@+id/restaurant_status_textView_list_item"
+                android:text="Status"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Status"
+                android:ems="10"
+                android:id="@+id/restaurant_status_textView_list_item_result"
+                tools:ignore="HardcodedText" />
+
+        </TableRow>
+    </TableLayout>
+    <TableLayout
+        android:paddingTop="50dip"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+
+        <TableRow
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:text="Approve"
+                android:gravity="center|center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dip"
+                android:id="@+id/edit_restaurant_list_item_button"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:text="Deny"
+                android:gravity="center|center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/delete_restaurant_list_item_button"
+                tools:ignore="HardcodedText" />
+        </TableRow>
+    </TableLayout>
+</TableLayout>

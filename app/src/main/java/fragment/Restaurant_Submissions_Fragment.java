@@ -1,18 +1,21 @@
 package fragment;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import com.rokiel.james.rokieldashboard.R;
-import com.rokiel.james.rokieldashboard.activity.Restaurant;
-import com.rokiel.james.rokieldashboard.activity.RestaurantAdapter;
+import com.rokiel.james.rokieldashboard.activity.RestaurantListItemActivity;
+
+import custom_classes.RestaurantSubmissionListItem;
+import adapter.RestaurantSubmissionsListAdapter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedWriter;
@@ -33,19 +36,24 @@ import org.json.JSONException;
  * A simple {@link Fragment} subclass.
  */
 
-public class Restaurant_List extends ListFragment{
+public class Restaurant_Submissions_Fragment extends Fragment{
 
-    ArrayList<Restaurant> restaurantList = new ArrayList<>();
+    ArrayList<RestaurantSubmissionListItem> restaurantSubmissionsListListItem = new ArrayList<>();
     private ListView resList;
-    private RestaurantAdapter lAdapter;
+    private RestaurantSubmissionsListAdapter lAdapter;
 
 
-    public Restaurant_List() {
+    public Restaurant_Submissions_Fragment() {
         // Required empty public constructor
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view  = inflater.inflate(R.layout.fragment_restaurant__list, container, false);
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view;
+        view = inflater.inflate(R.layout.fragment_restaurant__submissions, container, false);
         new DownloadJSON(view).execute();
         return view;
     }
@@ -61,7 +69,7 @@ public class Restaurant_List extends ListFragment{
         @Override
         protected Void doInBackground(Void... params){
             try{
-                String sURL = "http://www.jblairkiel.com/JSProjects/ajaxCalls.php?func=" + URLEncoder.encode("getApprovedResturants","UTF-8");
+                String sURL = "http://www.jblairkiel.com/JSProjects/ajaxCalls.php?func=" + URLEncoder.encode("getResturantSubmissions","UTF-8");
                 URL url = new URL(sURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("GET");
@@ -89,6 +97,7 @@ public class Restaurant_List extends ListFragment{
             }catch(IOException e){
                 e.printStackTrace();
             }
+
             Log.e("MyActivity","result: " + result);
 
             try {
@@ -97,13 +106,11 @@ public class Restaurant_List extends ListFragment{
                     JSONObject res = jArray.getJSONObject(i);
                     String jID = res.getString("ID");
                     String jResturantName = res.getString("ResturantName");
-                    String jAddress = res.getString("Address");
-                    String jType = res.getString("Type");
-                    String jPrice = res.getString("Price");
-                    String jSpinnerGroup = res.getString("SpinnerGroup");
+                    String jLocation = res.getString("Location");
+                    String jStatus = res.getString("Status");
 
-                    Restaurant rest = new Restaurant(Integer.parseInt(jID),jResturantName, jAddress, jType,jPrice, jSpinnerGroup);
-                    restaurantList.add(rest);
+                    RestaurantSubmissionListItem rest = new RestaurantSubmissionListItem(Integer.parseInt(jID),jResturantName, jLocation, jStatus);
+                    restaurantSubmissionsListListItem.add(rest);
                 }
             } catch (JSONException e) {
                 Log.e("JSON Parse","Result: " + result + "|Error parsing data: " + e.toString());
@@ -119,16 +126,45 @@ public class Restaurant_List extends ListFragment{
 
         @Override
         protected void onPostExecute(Void aVoid){
-            resList = (ListView) lView.findViewById(R.id.restaurant_list__list_view);
-            lAdapter = new RestaurantAdapter(lView.getContext(), R.layout.fragment_restaurant__list, restaurantList);
+            resList = (ListView) lView.findViewById(R.id.restaurant_submissions_listview);
+            lAdapter = new RestaurantSubmissionsListAdapter(lView.getContext(), R.layout.fragment_restaurant__submissions, restaurantSubmissionsListListItem);
             resList.setAdapter(lAdapter);
+            resList.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener(){
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id){
+                    selectRestaurantItem(position);
+                }
+                public void selectRestaurantItem(int position){
+                    //RestaurantListItem item = (RestaurantListItem) restaurantListItemList.get(position);
+                    resList.setItemChecked(position, true);
+                    RestaurantSubmissionListItem rLI = restaurantSubmissionsListListItem.get(position);
+
+                    Intent intent = new Intent(getActivity(), RestaurantListItemActivity.class);
+                    Bundle b = new Bundle();
+
+                    String lID = Integer.toString(rLI.getID());
+                    String lName = rLI.getRestaurantName();
+                    String lLocation = rLI.getLocation();
+                    String lStatus = rLI.getStatus();
+
+                    b.putString("id", lID);
+                    b.putString("name", lName);
+                    b.putString("location", lLocation);
+                    b.putString("status", lStatus);
+
+                    intent.putExtras(b);
+                    startActivity(intent);
+
+                    //rLI.loadRestaurantListItem(resList, item);
+                }
+
+            });
         }
 
         @Override
         protected void onProgressUpdate(Void... values){
             super.onProgressUpdate(values);
         }
-
 
     }
 }

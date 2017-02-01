@@ -1,4 +1,4 @@
-package com.rokiel.james.rokieldashboard.activity;
+package adapter;
 
 import java.util.ArrayList;
 
@@ -9,26 +9,27 @@ import android.widget.ArrayAdapter;
 import android.content.Context;
 import android.widget.TextView;
 import com.rokiel.james.rokieldashboard.R;
+import custom_classes.RestaurantSubmissionListItem;
 
-public class RestaurantSubmissionsAdapter extends ArrayAdapter<RestaurantSubmission> {
+public class RestaurantSubmissionsListAdapter extends ArrayAdapter<RestaurantSubmissionListItem> {
     View customView;
     private Context lContext;
-    private ArrayList<RestaurantSubmission> lRestaurantSubmission;
+    private ArrayList<RestaurantSubmissionListItem> lRestaurantSubmissionListItem;
     private int lTextViewResourceID;
     private static LayoutInflater lInflater = null;
 
-    public RestaurantSubmissionsAdapter(Context context, int textViewResourceId, ArrayList<RestaurantSubmission> _lRestaurantSubmission) {
-        super(context, R.layout.custom_restaurant_submissions_row, _lRestaurantSubmission);
-        lRestaurantSubmission = _lRestaurantSubmission;
+    public RestaurantSubmissionsListAdapter(Context context, int textViewResourceId, ArrayList<RestaurantSubmissionListItem> _lRestaurantSubmissionListItem) {
+        super(context, R.layout.custom_restaurant_submissions_row, _lRestaurantSubmissionListItem);
+        lRestaurantSubmissionListItem = _lRestaurantSubmissionListItem;
         lContext = context;
         lTextViewResourceID = textViewResourceId;
     }
 
     public int getCount() {
-        return lRestaurantSubmission.size();
+        return lRestaurantSubmissionListItem.size();
     }
 
-    public RestaurantSubmission getItem(RestaurantSubmission position) {
+    public RestaurantSubmissionListItem getItem(RestaurantSubmissionListItem position) {
         return position;
     }
 
@@ -48,15 +49,15 @@ public class RestaurantSubmissionsAdapter extends ArrayAdapter<RestaurantSubmiss
         LayoutInflater lInflater = LayoutInflater.from(getContext());
         customView = lInflater.inflate(R.layout.custom_restaurant_submissions_row,parent,false);
 
-        RestaurantSubmission lRestaurant = getItem(position);
+        RestaurantSubmissionListItem lRestaurant = getItem(position);
         TextView restaurantSubNameText = (TextView) customView.findViewById(R.id.restaurantSubmissionNameText);
         TextView restaurantLocationText = (TextView) customView.findViewById(R.id.restaurantLocationText);
         TextView restaurantStatusText = (TextView) customView.findViewById(R.id.restaurantStatusText);
 
-        restaurantSubNameText.setText(lRestaurant.RestaurantName);
-        restaurantLocationText.setText(lRestaurant.Location);
-        restaurantStatusText.setText(lRestaurant.Status);
-        customView.setTag(lRestaurant.ID);
+        restaurantSubNameText.setText(lRestaurant.getRestaurantName());
+        restaurantLocationText.setText(lRestaurant.getLocation());
+        restaurantStatusText.setText(lRestaurant.getStatus());
+        customView.setTag(lRestaurant.getID());
 
         return customView;
 
