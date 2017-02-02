@@ -1,17 +1,15 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingTop="?attr/actionBarSize"
-    tools:context=".activity.RestaurantSubmissionListItemActivity">
+    android:layout_height="fill_parent">
 
     <TableLayout
         android:layout_height="wrap_content"
         android:paddingTop="?attr/actionBarSize"
-        android:layout_width="wrap_content">
+        android:layout_width="match_parent">
         <!-- TODO: Update blank fragment layout -->
         <TableRow
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dip">
 
@@ -26,12 +24,12 @@
                 android:text="ID"
                 android:gravity="end"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                tools:ignore="HardcodedText" />
+                android:textAlignment="textEnd" />
 
         </TableRow>
 
         <TableRow
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dip">
 
@@ -53,7 +51,7 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dip">
 
@@ -74,7 +72,7 @@
 
         </TableRow>
          <TableRow
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dip">
 
@@ -95,33 +93,33 @@
 
         </TableRow>
     </TableLayout>
-    <TableLayout
-        android:paddingTop="50dip"
+
+    <Button
+        android:text="Deny"
+        android:gravity="center|center_horizontal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content">
+        android:id="@+id/deny_restaurant_submission_list_item_button"
+        tools:ignore="HardcodedText"
+        android:layout_marginBottom="91dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginStart="52dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/approve_restaurant_submission_list_item_button"
+        android:layout_toEndOf="@+id/approve_restaurant_submission_list_item_button" />
 
-        <TableRow
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
+    <Button
+        android:text="Approve"
+        android:gravity="center|center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/approve_restaurant_submission_list_item_button"
+        tools:ignore="HardcodedText"
+        android:layout_marginLeft="80dp"
+        android:layout_marginStart="80dp"
+        android:layout_alignBaseline="@+id/deny_restaurant_submission_list_item_button"
+        android:layout_alignBottom="@+id/deny_restaurant_submission_list_item_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-            <Button
-                android:text="Approve"
-                android:gravity="center|center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dip"
-                android:id="@+id/edit_restaurant_list_item_button"
-                tools:ignore="HardcodedText" />
-
-            <Button
-                android:text="Deny"
-                android:gravity="center|center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/delete_restaurant_list_item_button"
-                tools:ignore="HardcodedText" />
-        </TableRow>
-    </TableLayout>
-</TableLayout>
+</RelativeLayout>

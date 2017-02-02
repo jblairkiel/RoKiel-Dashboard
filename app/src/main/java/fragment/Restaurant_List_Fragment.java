@@ -48,6 +48,8 @@ public class Restaurant_List_Fragment extends ListFragment{
     private ListView resList;
     private RestaurantListAdapter lAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private MenuInflater mInflater;
+    private Menu fMenu;
 
     public Restaurant_List_Fragment() {
         // Required empty public constructor
@@ -69,7 +71,15 @@ public class Restaurant_List_Fragment extends ListFragment{
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater){
-        super.onCreateOptionsMenu(menu, menuInflater);
+        fMenu = menu;
+        /*
+        MenuItem item = menu.add(Menu.NONE, R.id.trashCanRestaurantListActionBar, 10, "TrashCan");
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        item.setIcon(R.drawable.ic_delete_black_24dp);
+        item.setVisible(false);
+        */
+        mInflater = menuInflater;
+        mInflater.inflate(R.menu.fragment_restaurant_list_trash, fMenu);
     }
 
     @Override
@@ -81,7 +91,10 @@ public class Restaurant_List_Fragment extends ListFragment{
             //do something
             return true;
         }
-        if(id == R.id.trashCanRestaurantListActionBar)
+        if(id == R.id.trashCanRestaurantListActionBar){
+            //do something
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -165,16 +178,22 @@ public class Restaurant_List_Fragment extends ListFragment{
                     if(selectedRestaurantListItems.contains(selectedItem)) {
                         resList.setItemChecked(position, false);
                         selectedRestaurantListItems.remove(selectedItem);
+                        lAdapter.notifyDataSetChanged();
+                        resList.setAdapter(lAdapter);
                     }
                     else {
-                        resList.setItemChecked(position, true);
+                        resList.setSelected(true);
                         selectedRestaurantListItems.add(selectedItem);
                     }
 
-                    if(selectedRestaurantListItems.isEmpty()){
-                        getActivity().getActionBar().
+                    MenuItem item = fMenu.findItem(R.id.trashCanRestaurantListActionBar);
+                    if(selectedRestaurantListItems.isEmpty() & item.isVisible()){
+                        item.setVisible(false);
                     }
-                    return false;
+                    else if((!selectedRestaurantListItems.isEmpty()) & (!item.isVisible())){
+                        item.setVisible(true);
+                    }
+                    return true;
                 }
             });
             resList.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener(){
@@ -207,7 +226,7 @@ public class Restaurant_List_Fragment extends ListFragment{
                     intent.putExtras(b);
                     startActivity(intent);
 
-                    //rLI.loadRestaurantListItem(resList, item);
+                    //rLI.loadRestaurantSubmissionListItem(resList, item);
                 }
 
             });

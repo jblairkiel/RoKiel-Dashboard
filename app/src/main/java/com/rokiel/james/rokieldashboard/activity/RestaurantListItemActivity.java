@@ -1,7 +1,7 @@
 package com.rokiel.james.rokieldashboard.activity;
 
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,8 +14,7 @@ import com.rokiel.james.rokieldashboard.R;
 
 public class RestaurantListItemActivity extends AppCompatActivity {
 
-    Button editButton;
-    Button deleteButton;
+    Button editButton = null;
 
 
     @Override
@@ -30,15 +29,6 @@ public class RestaurantListItemActivity extends AppCompatActivity {
         String rType = b.getString("type");
         String rPrice = b.getString("price");
         String rGroup = b.getString("group");
-
-        editButton = (Button) this.findViewById(R.id.edit_restaurant_list_item_button);
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        deleteButton = (Button) this.findViewById(R.id.delete_restaurant_list_item_button);
 
 
         setContentView(R.layout.activity_restaurant__list__item);
@@ -71,5 +61,23 @@ public class RestaurantListItemActivity extends AppCompatActivity {
         lType.setText(rType);
         lPrice.setText(rPrice);
         lGroup.setText(rGroup);
+
+        editButton = (Button) findViewById(R.id.approve_restaurant_submission_list_item_button);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(RestaurantListItemActivity.this)
+                        .setTitle("Did Something")
+                        .setMessage("Yay")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            }
+        });
+
     }
 }

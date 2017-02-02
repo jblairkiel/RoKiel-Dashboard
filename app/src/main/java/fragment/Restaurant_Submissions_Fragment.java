@@ -157,7 +157,7 @@ public class Restaurant_Submissions_Fragment extends Fragment{
                     intent.putExtras(b);
                     startActivity(intent);
 
-                    //rLI.loadRestaurantListItem(resList, item);
+                    //rLI.loadRestaurantSubmissionListItem(resList, item);
                 }
 
             });

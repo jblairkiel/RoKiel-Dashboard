@@ -1,173 +1,175 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout android:layout_width="fill_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingTop="?attr/actionBarSize"
-    tools:context=".activity.RestaurantListItemActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TableLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content">
-        <!-- TODO: Update blank fragment layout -->
-        <TableRow
-            android:layout_width="wrap_content"
+        android:paddingTop="?attr/actionBarSize"
+        tools:context=".activity.RestaurantListItemActivity">
+
+        <TableLayout
             android:layout_height="wrap_content"
-            android:padding="5dip">
-
-            <TextView
-                android:id="@+id/restaurant_id_textView_list_item"
-                android:text="ID"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/restaurant_id_textView_list_item_result"
-                android:text="ID"
-                android:gravity="end"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                tools:ignore="HardcodedText" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dip">
-
-            <TextView
-                android:id="@+id/restaurant_name_textView_list_item"
-                android:text="Restaurant Name"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                tools:ignore="HardcodedText" />
-
-            <EditText
+            android:layout_width="wrap_content">
+            <!-- TODO: Update blank fragment layout -->
+            <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:inputType="textPersonName"
-                android:text="Name"
-                android:ems="10"
-                android:id="@+id/restaurant_name_editText_list_item"
-                tools:ignore="HardcodedText" />
+                android:padding="5dip">
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/restaurant_id_textView_list_item"
+                    android:text="ID"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    tools:ignore="HardcodedText" />
 
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dip">
+                <TextView
+                    android:id="@+id/restaurant_id_textView_list_item_result"
+                    android:text="ID"
+                    android:gravity="end"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    tools:ignore="HardcodedText" />
 
-            <TextView
-                android:id="@+id/restaurant_address_textView_list_item"
-                android:text="Address"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                tools:ignore="HardcodedText" />
+            </TableRow>
 
-            <EditText
+            <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:inputType="textPersonName"
-                android:text="Address"
-                android:ems="10"
-                android:id="@+id/restaurant_address_editText_list_item"
-                tools:ignore="HardcodedText" />
+                android:padding="5dip">
 
-        </TableRow>
-         <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dip">
+                <TextView
+                    android:id="@+id/restaurant_name_textView_list_item"
+                    android:text="Restaurant Name"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    tools:ignore="HardcodedText" />
 
-            <TextView
-                android:id="@+id/restaurant_type_textView_list_item"
-                android:text="Type"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                tools:ignore="HardcodedText" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:inputType="textPersonName"
+                    android:text="Name"
+                    android:ems="10"
+                    android:id="@+id/restaurant_name_editText_list_item"
+                    tools:ignore="HardcodedText" />
 
-            <EditText
+            </TableRow>
+
+            <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:gravity="end"
-                android:text="Type"
-                android:ems="10"
-                android:id="@+id/restaurant_type_editText_list_item"
-                tools:ignore="HardcodedText" />
+                android:padding="5dip">
 
-        </TableRow>
-         <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dip">
+                <TextView
+                    android:id="@+id/restaurant_address_textView_list_item"
+                    android:text="Address"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    tools:ignore="HardcodedText" />
 
-            <TextView
-                android:id="@+id/restaurant_price_textView_list_item"
-                android:text="Price"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                tools:ignore="HardcodedText" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:inputType="textPersonName"
+                    android:text="Address"
+                    android:ems="10"
+                    android:id="@+id/restaurant_address_editText_list_item"
+                    tools:ignore="HardcodedText" />
 
-            <EditText
+            </TableRow>
+             <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:inputType="textPersonName"
-                android:text="Price"
-                android:ems="10"
-                android:id="@+id/restaurant_price_editText_list_item"
-                tools:ignore="HardcodedText" />
+                android:padding="5dip">
 
-        </TableRow>
-         <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dip">
+                <TextView
+                    android:id="@+id/restaurant_type_textView_list_item"
+                    android:text="Type"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    tools:ignore="HardcodedText" />
 
-            <TextView
-                android:id="@+id/restaurant_spinnergroup_textView_list_item"
-                android:text="SpinnerGroup"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                tools:ignore="HardcodedText" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:gravity="end"
+                    android:text="Type"
+                    android:ems="10"
+                    android:id="@+id/restaurant_type_editText_list_item"
+                    tools:ignore="HardcodedText" />
 
-            <EditText
+            </TableRow>
+             <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:inputType="textPersonName"
-                android:text="Group"
-                android:ems="10"
-                android:id="@+id/restaurant_spinnergroup_editText_list_tem"
-                tools:ignore="HardcodedText" />
+                android:padding="5dip">
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/restaurant_price_textView_list_item"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:inputType="textPersonName"
+                    android:text="Price"
+                    android:ems="10"
+                    android:id="@+id/restaurant_price_editText_list_item"
+                    tools:ignore="HardcodedText" />
+
+            </TableRow>
+             <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:id="@+id/restaurant_spinnergroup_textView_list_item"
+                    android:text="SpinnerGroup"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:inputType="textPersonName"
+                    android:text="Group"
+                    android:ems="10"
+                    android:id="@+id/restaurant_spinnergroup_editText_list_tem"
+                    tools:ignore="HardcodedText" />
+
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:paddingTop="50dip"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+
+            <TableRow
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:stretchColumns="0,1,2"
+                android:orientation="horizontal">
+
+                <!--android:layout_marginLeft="50dp"
+                android:layout_marginStart="28dp" -->
+
+            </TableRow>
+        </TableLayout>
     </TableLayout>
-    <TableLayout
-        android:paddingTop="50dip"
+
+    <Button
+        android:text="Edit"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content">
-
-        <TableRow
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <Button
-                android:text="Edit"
-                android:gravity="center|center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dip"
-                android:id="@+id/edit_restaurant_list_item_button"
-                tools:ignore="HardcodedText" />
-
-            <Button
-                android:text="Delete"
-                android:gravity="center|center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/delete_restaurant_list_item_button"
-                tools:ignore="HardcodedText" />
-        </TableRow>
-    </TableLayout>
-</TableLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:id="@+id/approve_restaurant_submission_list_item_button" />
+</RelativeLayout>
