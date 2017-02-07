@@ -109,7 +109,7 @@ public class Restaurant_List_Fragment extends ListFragment{
         @Override
         protected Void doInBackground(Void... params){
             try{
-                String sURL = "http://www.jblairkiel.com/JSProjects/ajaxCalls.php?func=" + URLEncoder.encode("getApprovedResturants","UTF-8");
+                String sURL = "http://www.jblairkiel.com/JSProjects/ajaxCalls.php?func=" + URLEncoder.encode("getApprovedRestaurants","UTF-8");
                 URL url = new URL(sURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("GET");

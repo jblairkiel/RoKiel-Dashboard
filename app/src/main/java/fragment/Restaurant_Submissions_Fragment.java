@@ -71,7 +71,7 @@ public class Restaurant_Submissions_Fragment extends Fragment{
         @Override
         protected Void doInBackground(Void... params){
             try{
-                String sURL = "http://www.jblairkiel.com/JSProjects/ajaxCalls.php?func=" + URLEncoder.encode("getResturantSubmissions","UTF-8");
+                String sURL = "http://www.jblairkiel.com/JSProjects/ajaxCalls.php?func=" + URLEncoder.encode("getRestaurantSubmissions","UTF-8");
                 URL url = new URL(sURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("GET");

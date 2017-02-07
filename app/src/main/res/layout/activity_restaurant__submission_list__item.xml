@@ -5,6 +5,7 @@
 
     <TableLayout
         android:layout_height="wrap_content"
+        android:paddingLeft="25dip"
         android:paddingTop="?attr/actionBarSize"
         android:layout_width="match_parent">
         <!-- TODO: Update blank fragment layout -->
