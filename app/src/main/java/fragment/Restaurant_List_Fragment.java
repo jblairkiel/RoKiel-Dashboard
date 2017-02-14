@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -54,6 +55,8 @@ public class Restaurant_List_Fragment extends ListFragment{
     public Restaurant_List_Fragment() {
         // Required empty public constructor
     }
+
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         setHasOptionsMenu(true);
